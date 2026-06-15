@@ -49,7 +49,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="tabs">
   <button class="tab on" onclick="goTab('dashboards',this)">Dashboards</button>
   <button class="tab" onclick="goTab('metrics',this)">Metrics</button>
-  <button class="tab" onclick="goTab('fields',this)">Source fields</button>
   <button class="tab" onclick="goTab('params',this)">Filters &amp; parameters</button>
 </div>
 
@@ -203,125 +202,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="card" data-kw="history vs forecast label classification month today color code automatic">
     <div class="card-head"><span class="card-title">History vs forecast (label)</span><span class="tag t-gray">label field</span></div>
     <div class="card-body">A text label automatically applied to each month. Months before the current calendar month are tagged "History"; the current month and future months are tagged "Forecast". Used to color-code bars in the Forecast/History dashboard so the boundary between actuals and projections is always visible.</div>
-  </div>
-</div>
-
-<div id="fields" class="pane">
-  <div class="group-label">Transaction &amp; volume</div>
-
-  <div class="card" data-kw="data mth month year string date period yyyy-mm format text">
-    <div class="card-head"><span class="card-title">DATA_MTH</span><span class="tag t-gray">text — YYYY-MM</span></div>
-    <div class="card-body">The period month stored as text in YYYY-MM format (e.g. "2024-03"). All year-over-year logic reads the first 4 characters as the year and the last 2 as the month. The calculated field <em>Month</em> converts this to a proper date for chart axis labels.</div>
-  </div>
-
-  <div class="card" data-kw="invoiced ps invoiced units shipped actual sales primesource inbound benchmark">
-    <div class="card-head"><span class="card-title">INVOICED / PS invoiced</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units that PrimeSource actually invoiced (shipped) to Lowe's in the given month. This is the primary actuals field — every "PS Invoiced Sales" reference in the dashboard points here. It is the benchmark all forecasts are compared against.</div>
-  </div>
-
-  <div class="card" data-kw="invoiced sales dollars revenue ps invoiced sales dollar value">
-    <div class="card-head"><span class="card-title">INVOICED_SALES</span><span class="tag t-blue">dollars</span></div>
-    <div class="card-body">Dollar value of PrimeSource's invoiced shipments. Used in the PS Invoiced Sales CY/LY year-over-year comparison on the YoY sheet.</div>
-  </div>
-
-  <div class="card" data-kw="monthly forecast lowes forecast units demand signal lowe's system">
-    <div class="card-head"><span class="card-title">MONTHLY_FORECAST / Lowe's forecast</span><span class="tag t-amber">units — forecast</span></div>
-    <div class="card-body">Lowe's unit forecast for each month — what Lowe's system projects it will need. This is the Lowe's demand signal used in all Lowe's variance calculations. It comes from Lowe's, not PrimeSource.</div>
-  </div>
-
-  <div class="card" data-kw="ps forecast units primesource forecast ps_forecast accuracy">
-    <div class="card-head"><span class="card-title">PS_FORECAST / PS forecast</span><span class="tag t-amber">units — forecast</span></div>
-    <div class="card-body">PrimeSource's own unit forecast. Compared against INVOICED to measure how accurately PS predicted its own shipment volumes. Also shown as the future portion of the blended Sales and Forecast line.</div>
-  </div>
-
-  <div class="card" data-kw="sales units ty lowes pos consumer sell through this year point of sale register">
-    <div class="card-head"><span class="card-title">Lowe's sales units (Sales Units TY)</span><span class="tag t-blue">units — consumer POS</span></div>
-    <div class="card-body">Units sold by Lowe's to consumers at the register — point-of-sale data. "TY" = This Year. This measures consumer demand, which is distinct from what PS shipped to Lowe's. Comparing POS to INVOICED shows the replenishment gap.</div>
-  </div>
-
-  <div class="card" data-kw="lowes sales dollars ty sales revenue consumer retail">
-    <div class="card-head"><span class="card-title">Lowe's sales $ (Sales $ TY)</span><span class="tag t-blue">dollars — consumer POS</span></div>
-    <div class="card-body">Dollar value of Lowe's consumer POS sales in the current year. Used in the Lowe's Invoiced % Difference YoY metric.</div>
-  </div>
-
-  <div class="card" data-kw="lowes fr ordered qty fill rate ordered units denominator requested">
-    <div class="card-head"><span class="card-title">LOWES_FR_ORDERED_QTY</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units that Lowe's placed on fill-rate orders with PrimeSource. This is the denominator of Lowe's Fill Rate — what was requested.</div>
-  </div>
-
-  <div class="card" data-kw="lowes fr received qty fill rate received units numerator arrived">
-    <div class="card-head"><span class="card-title">LOWES_FR_RECEIVED_QTY</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units that Lowe's physically received against fill-rate orders. This is the numerator of Lowe's Fill Rate — what actually arrived.</div>
-  </div>
-
-  <div class="card" data-kw="fr order qty ps fill rate ordered primesource denominator system">
-    <div class="card-head"><span class="card-title">FR_ORDER_QTY</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units ordered as recorded in PrimeSource's system. The denominator of PS Fill Rate. May differ slightly from LOWES_FR_ORDERED_QTY because each system records orders independently — timing and system differences can create small gaps.</div>
-  </div>
-
-  <div class="card" data-kw="fr invoiced qty ps fill rate invoiced primesource numerator shipped">
-    <div class="card-head"><span class="card-title">FR_INVOICED_QTY</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units invoiced as recorded in PrimeSource's system. The numerator of PS Fill Rate.</div>
-  </div>
-
-  <div class="card" data-kw="available inventory units ty lowes on hand stock in store shelves">
-    <div class="card-head"><span class="card-title">Lowe's on hand (units) / available inventory</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units currently on Lowe's store shelves and backrooms. Used as the numerator in the Inv/Str metric and plotted in the Lowe's Inventory trend chart.</div>
-  </div>
-
-  <div class="card" data-kw="lowes on order units inventory direct order open po pipeline inbound">
-    <div class="card-head"><span class="card-title">Lowe's on order (units) / inventory on direct order</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">Units Lowe's has on open purchase orders — ordered from PrimeSource but not yet received. Represents what's in the inbound pipeline. Shown in the On Order trend chart and the current-period metrics.</div>
-  </div>
-
-  <div class="card" data-kw="lowes active store stocking sku stores count per sku specific product">
-    <div class="card-head"><span class="card-title">LOWES_ACTIVE_STORE</span><span class="tag t-gray">count</span></div>
-    <div class="card-body">Number of Lowe's stores where a specific SKU is listed as active/stocked. Used as the store count denominator when "Stores where SKU is Active" is selected. Varies by product — an SKU in only 400 stores shows 400 here even if Lowe's has many more total locations.</div>
-  </div>
-
-  <div class="card" data-kw="active count system total stores all lowes chain wide count system">
-    <div class="card-head"><span class="card-title">ACTIVE_COUNT_SYSTEM</span><span class="tag t-gray">count</span></div>
-    <div class="card-body">Total number of active Lowe's stores chain-wide, regardless of which SKUs are stocked there. Used when "Total Stores" is the selected parameter. Averaged (AVG) rather than summed because the same total store count repeats for every row in a given month.</div>
-  </div>
-
-  <div class="card" data-kw="ps sku primesource sku material id product identifier item number paste">
-    <div class="card-head"><span class="card-title">PS_SKU / Paste SKU list</span><span class="tag t-gray">ID</span></div>
-    <div class="card-body">PrimeSource's internal product identifier. The <em>Paste SKU List</em> filter uses this field — paste a list of PS SKU numbers to scope all views to specific products. Leave blank to see all SKUs.</div>
-  </div>
-
-  <div class="card" data-kw="lowes sku lowes item number product identifier retailer side">
-    <div class="card-head"><span class="card-title">LOWES_SKU</span><span class="tag t-gray">ID</span></div>
-    <div class="card-body">Lowe's own item number for the same product. When aggregating by Material ID in the variance table, both identifiers are shown together (PS SKU — Lowe's SKU) so you can look up either side.</div>
-  </div>
-
-  <div class="card" data-kw="flc major minor description product category hierarchy group family">
-    <div class="card-head"><span class="card-title">FLC major / FLC minor</span><span class="tag t-gray">product hierarchy</span></div>
-    <div class="card-body">Two-level product category hierarchy used throughout the dashboard. FLC Major is the broader grouping (e.g. a product family); FLC Minor is a subdivision within it. The default aggregation in most views rolls up by FLC Major. Most filter panels let you pick one or both levels to drill down.</div>
-  </div>
-
-  <div class="card" data-kw="ps dc plant id distribution center location ship from fulfillment warehouse">
-    <div class="card-head"><span class="card-title">PS_DC / Plant ID</span><span class="tag t-gray">location</span></div>
-    <div class="card-body">The PrimeSource distribution center or manufacturing plant that fulfills the product. Available as a dimension in the Dimensions parameters and Aggregation Filter so you can break down any metric by which DC is shipping.</div>
-  </div>
-
-  <div class="card" data-kw="hub districts region geography lowes stores area location">
-    <div class="card-head"><span class="card-title">Hub / Districts</span><span class="tag t-gray">geography</span></div>
-    <div class="card-body">Geographic groupings of Lowe's store locations. Hub is the broader regional level; Districts is more granular. Available as filters on most sheets — useful for isolating performance in a specific part of the country.</div>
-  </div>
-
-  <div class="card" data-kw="item status active inactive show hide filter visibility item s">
-    <div class="card-head"><span class="card-title">ITEM_STATUS</span><span class="tag t-gray">text</span></div>
-    <div class="card-body">Flags whether an item is active or inactive. The calculated field <em>item s</em> converts this to "Show" or "Hide" — null values, blank strings, and the literal text "Null" all map to "Hide", so inactive or missing-status items are automatically excluded from views without any manual filter work.</div>
-  </div>
-
-  <div class="card" data-kw="ps inventory primesource warehouse stock on hand dc distribution center">
-    <div class="card-head"><span class="card-title">PS inventory</span><span class="tag t-blue">units</span></div>
-    <div class="card-body">PrimeSource's own on-hand inventory at its distribution centers — distinct from inventory sitting in Lowe's stores. Plotted in the PS Inventory trend chart on the metrics charts dashboard.</div>
-  </div>
-
-  <div class="card" data-kw="open pos sales orders po rcvd purchase order received backlog pipeline supply chain">
-    <div class="card-head"><span class="card-title">OPEN POS / Sales orders / PO RCVD</span><span class="tag t-gray">units</span></div>
-    <div class="card-body">Supply chain pipeline fields shown in the main Lowe's summary sheet. Open POS = Lowe's open purchase orders to PrimeSource. Sales Orders = PrimeSource's sales order backlog. PO RCVD = purchase orders Lowe's has confirmed received. Together they show where product is in the supply chain at any moment.</div>
   </div>
 </div>
 
