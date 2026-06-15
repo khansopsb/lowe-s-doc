@@ -218,7 +218,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <div class="card" data-kw="dimension 1 2 3 4 5 row breakdown drill grouping flc major minor plant material custom">
     <div class="card-head"><span class="card-title">Dimensions 1–5</span><span class="tag t-purple">parameters</span></div>
-    <div class="card-body">Up to five independently selectable row dimensions for the Forecast/History and detail views. Each slot can be set to any option below, or left as "—" to collapse that level and reduce row count. You can layer them to build a custom drill-down hierarchy on the fly without changing the workbook structure.</div>
+    <div class="card-body">Up to five independently selectable row dimensions for the Forecast/History and detail views. Each slot can be set to any option below, or left as "—" to collapse that level and reduce row count.</div>
     <div class="chips"><span class="chip">Product Group</span><span class="chip">FLC Major</span><span class="chip">FLC Minor</span><span class="chip">Plant ID</span><span class="chip">Material ID</span><span class="chip">— (none)</span></div>
   </div>
 
@@ -229,9 +229,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <div class="group-label">How "current period" auto-detection works</div>
 
-  <div class="card" data-kw="data thru latest month fixed lod calculation most recent non null current period logic technical automatic">
-    <div class="card-head"><span class="card-title">DATA_THRU fields — how the workbook finds the latest month automatically</span><span class="tag t-gray">technical</span></div>
-    <div class="card-body">Many metrics show a "current" or "Curr" value without you having to set a date filter. The workbook finds the most recent month with actual data for each metric using a FIXED level-of-detail (LOD) expression. FIXED means the calculation runs across the entire dataset and ignores any filters on the view — so the "latest month" is always global. Each metric has its own DATA_THRU because different data types (fill rate, store count, inventory, on-order) can have different data lag times and may not all be current to the same month.</div>
   </div>
 
   <div class="group-label">Standard dimension &amp; geography filters</div>
