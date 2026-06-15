@@ -86,12 +86,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <div class="card" data-kw="lowes fill rate received ordered units percentage fr">
     <div class="card-head"><span class="card-title">Lowe's fill rate</span><span class="tag t-teal">% ratio</span></div>
-    <div class="card-body">What percentage of the units Lowe's ordered from PrimeSource were actually received by Lowe's. A fill rate of 95% means 5% of ordered units did not arrive. Uses Lowe's receiving data (LOWES_FR_RECEIVED_QTY and LOWES_FR_ORDERED_QTY).</div>
+    <div class="card-body">What percentage of the units Lowe's ordered from PrimeSource were actually received by Lowe's. A fill rate of 95% means 5% of ordered units did not arrive. </div>
   </div>
 
   <div class="card" data-kw="lowes fill rate current curr most recent month latest data auto">
     <div class="card-head"><span class="card-title">Lowe's fill rate (current)</span><span class="tag t-teal">% ratio</span></div>
-    <div class="card-body">Same ratio as Lowe's Fill Rate but restricted to only the most recent month that has actual order data. The workbook finds that month automatically using a FIXED level-of-detail calculation — you never need to set a date filter manually. This is the number shown in the Current Fill Rate Opportunities view.</div>
+    <div class="card-body">Same as Lowe's Fill Rate but restricted to only the most recent month that has actual order data. </div>
   </div>
 
   <div class="card" data-kw="lowes fill rate misses unit gap shortfall not received current">
@@ -101,7 +101,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <div class="card" data-kw="ps fill rate primesource fr invoiced order qty fulfillment">
     <div class="card-head"><span class="card-title">PS fill rate</span><span class="tag t-teal">% ratio</span></div>
-    <div class="card-body">PrimeSource's fill rate measured using PS's own fulfillment records (FR_INVOICED_QTY and FR_ORDER_QTY), as opposed to Lowe's receiving data. Can differ from Lowe's Fill Rate due to timing differences, transit lags, or how each side records receipts.</div>
+    <div class="card-body">PrimeSource's fill rate measured using PS's own fulfillment records (FR_INVOICED_QTY and FR_ORDER_QTY). </div>
   </div>
 
   <div class="card" data-kw="ps fill rate cy ly current year last year diff bps basis points yoy year over year">
@@ -117,7 +117,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="group-label">Sales &amp; forecast variance</div>
 
   <div class="card" data-kw="lowes var forecast invoiced variance difference units monthly over under">
-    <div class="card-head"><span class="card-title">Lowe's var (Lowe's fcst vs invoiced sales)</span><span class="tag t-amber">unit variance</span></div>
+    <div class="card-head"><span class="card-title">Lowe's var (Lowe's fcst vs PS invoiced sales)</span><span class="tag t-amber">unit variance</span></div>
     <div class="card-body">How many units Lowe's forecast missed PS Invoiced Sales by. Positive = Lowe's over-forecasted (expected more than PS shipped). Negative = under-forecasted. Used to judge the accuracy of Lowe's own demand signal.</div>
   </div>
 
